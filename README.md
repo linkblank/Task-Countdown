@@ -1,7 +1,13 @@
+# Task Countdown for Obsidian
+
+
+A lightweight plugin that adds dynamic countdown days to checklist items based on due dates. Perfect for deadline tracking, project planning, and habit management — all inside your Obsidian vault.
+
+![Example Screenshot](docs/assets/example.png)
 
 ---
 
-## ✨ 功能特性
+## ✨ Features 功能特性
 
 - **自动计算剩余天数**：基于当前系统日期，精确计算未来/过去天数。
 - **双模式支持**：
@@ -12,77 +18,86 @@
 - **主题适配**：自动适应 Obsidian 亮色/暗色主题，且未来（绿）、今天（黄）、过期（红）三色区分。
 - **命令与自动刷新**：提供“刷新剩余天数显示”命令；切换文件或修改设置后自动更新。
 
-示例：
-![示例图片](docs/assets/example.png)
 
+- **Automatic day calculation** – Computes remaining/elapsed days relative to current system date.
+- **Dual‑mode support**  
+  - **Live Preview / Reading View** – Inserts countdown text directly after the date.  
+  - **Source Mode** – Uses CodeMirror decorations to display a non‑intrusive label at the end of the line, without modifying the original Markdown.
+- **Highly customizable** – Define your own text formats for future, overdue, and today’s tasks.
+- **Filter completed tasks** – Optionally hide the countdown on checked items.
+- **Theme aware** – Automatically adapts to Obsidian light/dark themes with color coding: future (green), today (yellow), overdue (red).
+- **Commands & auto refresh** – Manual "Refresh countdown" command, plus automatic updates when switching files or changing settings.
 
 ---
 
-## 📦 安装方法
-### 自动安装
-1、官方市场搜索 task-countdown
+## 📦 Installation
 
-### 手动安装
+### From Obsidian Community Store
 
-1. 进入你的 Obsidian 库的插件目录：  
-   `<库路径>/.obsidian/plugins/`
-2. 创建文件夹 `task-countdown`
-3. 将以下四个文件放入该文件夹：  
+1. Open **Settings → Community Plugins** and turn off **Restricted mode** if needed.
+2. Click **Browse** and search for **Task Countdown**.
+3. Install the plugin and enable it.
+
+### Manual Installation
+
+1. Go to your vault’s plugin folder:  
+   `<vault-root>/.obsidian/plugins/`
+2. Create a new folder named `task-countdown`.
+3. Place the following files inside it:  
    - `main.js`  
    - `manifest.json`  
    - `styles.css`  
-   - `README.md`（可选）
-4. 重启 Obsidian 或打开“设置 → 第三方插件 → 刷新”按钮
-5. 在“已安装插件”列表中找到 **Task-Countdown**，点击启用
-
-
----
-
-## 🚀 使用方法
-
-1. 在笔记中创建一个任务列表项，格式为：  
-   `- [ ] 任务描述 📅 YYYY-MM-DD`  
-   例如：`- [ ] 提交报告 📅 2026-06-01`
-2. 插件会自动在日期后显示剩余天数：  
-   `- [ ] 提交报告 📅 2026-06-01 剩余6天`
-3. 在**源码模式**下，剩余天数会以浅色标签形式出现在行尾，**不会写入原文件**。
-4. 可以通过插件的设置面板调整显示文本、颜色及是否显示已完成任务。
+   - `README.md` (optional)
+4. Restart Obsidian or click the **Refresh** button in **Settings → Community Plugins**.
+5. Find **Task Countdown** in the installed plugins list and enable it.
 
 ---
 
-## ⚙️ 配置说明
+## 🚀 Usage
 
-在 Obsidian 设置 → 第三方插件 → task-countdown → 齿轮图标，可调整以下选项：
-
-| 选项 | 描述 | 默认值 |
-|------|------|--------|
-| 显示已完成任务 | 关闭后，已完成（打勾）的任务将不再显示剩余天数 | 开启 |
-| 剩余天数文本 | 未来日期的显示格式，`{days}` 会被替换为实际天数 | `剩余{days}天` |
-| 过期天数文本 | 过去日期的显示格式 | `已过期{days}天` |
-| 今天截止文本 | 截止日期为今天时显示的文本 | `今天截止` |
-| 源码模式显示装饰 | 在源码编辑模式下是否显示剩余天数标签 | 开启 |
-
-> **注意**：修改任何文本后，插件会自动刷新所有已打开的笔记。
+1. Create a task list item using the following format:  
+   `- [ ] Task description 📅 YYYY-MM-DD`  
+   Example: `- [ ] Submit report 📅 2026-06-01`
+2. The plugin will automatically append the countdown after the date:  
+   `- [ ] Submit report 📅 2026-06-01 (6 days left)`
+3. In **Source mode**, the countdown is displayed as a light label at the end of the line and **never written to the original file**.
+4. Adjust display texts, colors, and show/hide completed tasks in the plugin settings.
 
 ---
 
-## 🖥️ 兼容性与限制
+## ⚙️ Configuration
 
-- **Obsidian 最低版本**：`0.15.0`（需要 CodeMirror 6 支持）
-- **支持的视图**：
-  - ✅ 实时预览模式（Live Preview）
-  - ✅ 阅读模式（Reading View）
-  - ✅ 源码模式（Source Mode，利用装饰器）
-  - ❌ 导出 PDF/HTML 时不会包含动态标签（因装饰不写入源文本）
+Open **Settings → Community Plugins → Task Countdown → Gear icon** to customize:
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| Show for completed tasks | When disabled, checked tasks will not show the countdown | `Enabled` |
+| Future days text | Format for future dates. `{days}` is replaced by the actual number | `{days} days left` |
+| Overdue days text | Format for past dates | `{days} days overdue` |
+| Today’s deadline text | Text shown when the due date is today | `Today` |
+| Show decoration in source mode | Display the countdown label in Source Mode (CodeMirror decoration) | `Enabled` |
+
+> **Note:** After changing any text option, all open notes will refresh automatically.
 
 ---
 
-## 🛠️ 开发与贡献
+## 🖥️ Compatibility & Limitations
 
-欢迎提交 Issue 或 Pull Request。构建插件前请确保已安装 Node.js 和 npm，然后执行：
+- **Minimum Obsidian version**: `0.15.0` (requires CodeMirror 6 support)
+- **Supported views**:
+  - ✅ Live Preview mode
+  - ✅ Reading View
+  - ✅ Source Mode (with decorations)
+  - ❌ Export to PDF/HTML – dynamic labels are **not** included (decorations are not written to the source file)
+
+---
+
+## 🛠️ Development & Contributions
+
+Issues and pull requests are welcome! To build the plugin locally:
 
 ```bash
-git clone <仓库地址>
-cd task-remaining-days
+git clone <repo-url>
+cd task-countdown
 npm install
 npm run build
